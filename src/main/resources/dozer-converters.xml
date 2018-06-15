@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://dozer.sourceforge.net
+          http://dozer.sourceforge.net/schema/beanmapping.xsd">
+    <configuration>
+        <custom-converters>
+
+            <converter
+                    type="com.senla.bolkunets.virtualtestlab.controllers.dto.converters.TokenDtoConverter" >
+                <class-a>
+                    com.senla.bolkunets.virtualtestlab.controllers.security.dto.TokenDto
+                </class-a>
+                <class-b>
+                    java.lang.String
+                </class-b>
+            </converter>
+            <converter
+                    type="com.senla.bolkunets.virtualtestlab.controllers.dto.converters.PersonalMethodicsResultConverter" >
+                <class-a>
+                    com.senla.bolkunets.virtualtestlab.controllers.dto.methodics.result.PersonalMethodicsResultDto
+                </class-a>
+                <class-b>
+                    com.senla.bolkunets.virtualtestlab.domain.model.methodics.result.PassingFact
+                </class-b>
+            </converter>
+            <converter
+                    type="com.senla.bolkunets.virtualtestlab.controllers.dto.converters.PassingFactConverter" >
+                <class-a>
+                    com.senla.bolkunets.virtualtestlab.controllers.dto.methodics.result.PassingFactDto
+                </class-a>
+                <class-b>
+                    com.senla.bolkunets.virtualtestlab.domain.model.methodics.result.PassingFact
+                </class-b>
+            </converter>
+            <converter
+                    type="com.senla.bolkunets.virtualtestlab.controllers.dto.converters.FullMethodicsConverter" >
+                <class-a>
+                    com.senla.bolkunets.virtualtestlab.controllers.dto.methodics.description.FullMethodicsDto
+                </class-a>
+                <class-b>
+                    com.senla.bolkunets.virtualtestlab.domain.model.methodics.description.Methodics
+                </class-b>
+            </converter>
+
+            <converter type="com.senla.bolkunets.virtualtestlab.controllers.dto.converters.ResponseMessageConverter">
+                <class-a>com.senla.bolkunets.virtualtestlab.controllers.dto.messages.ResponseMessageDto</class-a>
+                <class-b>java.lang.String</class-b>
+            </converter>
+            
+            <converter type="com.senla.bolkunets.virtualtestlab.controllers.dto.converters.ScaleValueConverter">
+                <class-a>com.senla.bolkunets.virtualtestlab.controllers.dto.methodics.result.ScaleValueDto</class-a>
+                <class-b>com.senla.bolkunets.virtualtestlab.domain.model.methodics.result.ScaleValue</class-b>
+            </converter>
+
+            <converter type="com.senla.bolkunets.virtualtestlab.controllers.dto.converters.MethodicsResultConverter">
+                <class-a>com.senla.bolkunets.virtualtestlab.controllers.dto.methodics.result.MethodicsResultDto</class-a>
+                <class-b>com.senla.bolkunets.virtualtestlab.domain.model.methodics.result.PassingFact</class-b>
+            </converter>
+
+            <converter type="com.senla.bolkunets.virtualtestlab.controllers.dto.converters.PersonResultConverter">
+                <class-a>com.senla.bolkunets.virtualtestlab.controllers.dto.methodics.result.PersonResultDto</class-a>
+                <class-b>com.senla.bolkunets.virtualtestlab.domain.model.user.Person</class-b>
+            </converter>
+        </custom-converters>
+    </configuration>
+</mappings>

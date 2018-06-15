@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <import resource="classpath:services-spring-config.xml"/>
+    <import resource="classpath:security-context.xml"/>
+
+    <mvc:annotation-driven/>
+    <context:component-scan base-package="com.senla.bolkunets.virtualtestlab.controllers"/>
+
+    <mvc:interceptors>
+        <bean class="com.senla.bolkunets.virtualtestlab.controllers.interceptors.AccessControlHeaderInterceptor"/>
+    </mvc:interceptors>
+
+    <bean id="metodicsConverter" class="com.senla.bolkunets.virtualtestlab.controllers.dto.converters.FullMethodicsConverter"/>
+    <bean autowire="constructor" id="passingFactConverter" class="com.senla.bolkunets.virtualtestlab.controllers.dto.converters.PassingFactConverter"/>
+    <bean autowire="constructor" id="methodicsResultConverter" class="com.senla.bolkunets.virtualtestlab.controllers.dto.converters.MethodicsResultConverter"/>
+    <bean autowire="constructor" id="personalMethodicsResult" class="com.senla.bolkunets.virtualtestlab.controllers.dto.converters.PersonalMethodicsResultConverter"/>
+
+    <bean class="org.dozer.DozerBeanMapper">
+
+        <property name="mappingFiles">
+            <value>dozer-converters.xml</value>
+        </property>
+
+        <property name="customConverters">
+            <list value-type="org.dozer.DozerConverter">
+                <ref bean="metodicsConverter"/>
+                <ref bean="passingFactConverter"/>
+                <ref bean="methodicsResultConverter"/>
+                <ref bean="personalMethodicsResult"/>
+                <bean class="com.senla.bolkunets.virtualtestlab.controllers.dto.converters.TokenDtoConverter"/>
+                <bean class="com.senla.bolkunets.virtualtestlab.controllers.dto.converters.ResponseMessageConverter"/>
+                <bean class="com.senla.bolkunets.virtualtestlab.controllers.dto.converters.ScaleValueConverter"/>
+                <bean class="com.senla.bolkunets.virtualtestlab.controllers.dto.converters.PersonResultConverter"/>
+            </list>
+        </property>
+
+    </bean>
+
+</beans>
