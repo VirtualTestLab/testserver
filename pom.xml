@@ -56,9 +56,9 @@
             <version>5.2.10.Final</version>
         </dependency>
         <dependency>
-            <groupId>com.senla.bolkunets</groupId>
-            <artifactId>virtualtestlab-api</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
