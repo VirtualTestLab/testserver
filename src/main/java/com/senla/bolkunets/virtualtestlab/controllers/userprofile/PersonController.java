@@ -65,4 +65,20 @@ public class PersonController {
         return dozerBeanMapper.map(deletedPerson, PersonInformationDto.class);
 
     }
+	
+	 @RequestMapping(value = "/get", method = RequestMethod.GET)
+    public PersonInformationDto getPersonInformation() {
+
+        User currentUser = userHolder.getCurrentUser();
+        UserProfile userProfile = currentUser.getUserProfile();
+
+        Person currenProfileUser = userProfile.getPerson();
+		
+		if(currenProfileUser!=null) {
+			return dozerBeanMapper.map(currenProfileUser, PersonInformationDto.class);
+		}
+		
+		return null;
+       
+    }
 }
