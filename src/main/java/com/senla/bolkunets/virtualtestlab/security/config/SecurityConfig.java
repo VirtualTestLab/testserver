@@ -22,6 +22,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    public static final String ROLE_ADMIN = "ROLE_ADMIN";
     @Autowired
     private TokenAuthenticationService tokenAuthenticationService;
 
@@ -37,10 +38,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
                 .antMatchers(HttpMethod.OPTIONS,"/**").permitAll()
-                .antMatchers("/users/**").hasAuthority("ROLE_ADMIN")
-                .antMatchers("/result/admin/**").hasAuthority("ROLE_ADMIN")
-                .antMatchers("/methodics/description/open/{idUser}").hasAuthority("ROLE_ADMIN")
-                .antMatchers("/methodics/description/get/**").hasAuthority("ROLE_ADMIN")
+                .antMatchers("/users/**").hasAuthority(ROLE_ADMIN)
+                .antMatchers("/result/admin/**").hasAuthority(ROLE_ADMIN)
+                .antMatchers("/methodics/description/open/{idUser}").hasAuthority(ROLE_ADMIN)
+                .antMatchers("/methodics/description/get/**").hasAuthority(ROLE_ADMIN)
+                .antMatchers("/documents/create").hasAuthority(ROLE_ADMIN)
+                .antMatchers("/documents/update").hasAuthority(ROLE_ADMIN)
+                .antMatchers("/documents/delete").hasAuthority(ROLE_ADMIN)
+                .antMatchers("/contact/create").hasAuthority(ROLE_ADMIN)
+                .antMatchers("/contact/update").hasAuthority(ROLE_ADMIN)
+                .antMatchers("/contact/delete").hasAuthority(ROLE_ADMIN)
                 .antMatchers("/token/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
