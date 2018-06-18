@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class DocumentDaoImpl extends AbstractDao<Integer, Document> implements DocumentDao {
-	public DocumentDaoImpl(Class<Document> type) {
-		super(type);
+	public DocumentDaoImpl() {
+		super(Document.class);
 	}
 }
