@@ -28,7 +28,7 @@ public class MethodicsResultController {
         this.dozerBeanMapper = dozerBeanMapper;
     }
 
-    @RequestMapping(value = "/get", method = RequestMethod.GET)
+    @RequestMapping(value = "/getuserresult", method = RequestMethod.GET)
     public MethodicsResultDto getResult(@RequestParam(value="userId") Integer userId, @RequestParam(value="methodicsId") Integer methodicsId){
         PassingFact passingFactForUser = passingFactService.getPassingFactForUser(methodicsId, userId);
         return dozerBeanMapper.map(passingFactForUser, MethodicsResultDto.class);
