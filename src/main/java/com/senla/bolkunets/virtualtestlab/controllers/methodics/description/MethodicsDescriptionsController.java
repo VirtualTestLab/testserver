@@ -71,6 +71,19 @@ public class MethodicsDescriptionsController {
         }
         return methodicsDescriptionDtoList;
     }
+    
+     @RequestMapping(value = "/passed/{userID}", method = RequestMethod.GET)
+    public List<MethodicsDescriptionDto> getPassedMethodicsForUserId(@PathVariable(value = "userID") Integer userId) {
+        final List<MethodicsDescriptionDto> methodicsDescriptionDtoList = new ArrayList<MethodicsDescriptionDto>();
+        List<Methodics> allMethodicsDescriptions = methodicsService.getPassedMethodicsByUserProfile(userId);
+        if(allMethodicsDescriptions!=null) {
+            for (Methodics methodics : allMethodicsDescriptions) {
+                MethodicsDescriptionDto methodicsDescriptionDto = dozerBeanMapper.map(methodics, MethodicsDescriptionDto.class);
+                methodicsDescriptionDtoList.add(methodicsDescriptionDto);
+            }
+        }
+        return methodicsDescriptionDtoList;
+    }
 
     @RequestMapping(value = "/open/{userID}")
     public List<MethodicsDescriptionDto> getOpenMethodicsByUserId(@PathVariable(value = "userID") Integer userId){
