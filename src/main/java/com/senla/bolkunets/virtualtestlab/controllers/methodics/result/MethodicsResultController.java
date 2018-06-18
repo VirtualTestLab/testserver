@@ -1,12 +1,14 @@
 package com.senla.bolkunets.virtualtestlab.controllers.methodics.result;
 
 import com.senla.bolkunets.virtualtestlab.controllers.dto.messages.ResponseMessageDto;
+import com.senla.bolkunets.virtualtestlab.controllers.dto.methodics.result.MethodicsResultDto;
 import com.senla.bolkunets.virtualtestlab.controllers.dto.methodics.result.PassingFactDto;
 import com.senla.bolkunets.virtualtestlab.controllers.dto.methodics.result.PersonResultDto;
 import com.senla.bolkunets.virtualtestlab.controllers.dto.methodics.result.PersonalMethodicsResultDto;
 import com.senla.bolkunets.virtualtestlab.domain.model.methodics.result.PassingFact;
 import com.senla.bolkunets.virtualtestlab.domain.model.user.Person;
 import com.senla.bolkunets.virtualtestlab.domain.services.PassingFactService;
+import com.senla.bolkunets.virtualtestlab.security.model.User;
 import org.dozer.DozerBeanMapper;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,6 +26,12 @@ public class MethodicsResultController {
     public MethodicsResultController(PassingFactService passingFactService, DozerBeanMapper dozerBeanMapper) {
         this.passingFactService = passingFactService;
         this.dozerBeanMapper = dozerBeanMapper;
+    }
+
+    @RequestMapping(value = "/get", method = RequestMethod.GET)
+    public MethodicsResultDto getResult(@RequestParam(value="userId") Integer userId, @RequestParam(value="methodicsId") Integer methodicsId){
+        PassingFact passingFactForUser = passingFactService.getPassingFactForUser(methodicsId, userId);
+        return dozerBeanMapper.map(passingFactForUser, MethodicsResultDto.class);
     }
 
     @RequestMapping(value = "/get", method = RequestMethod.GET)

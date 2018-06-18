@@ -19,6 +19,8 @@ public interface MethodicsService {
 
     List<Methodics> getAssignedMethodicsByUserProfile(Integer userProfileId);
 
+    boolean openMethodicsForUser(Integer methodicsId, Integer userId);
+
     List<Methodics> getPassedMethodicsByUserProfile(Integer userProfileId);
 
     List<Methodics> getNoPassedMethodicsByUserProfile(Integer userProfileId);

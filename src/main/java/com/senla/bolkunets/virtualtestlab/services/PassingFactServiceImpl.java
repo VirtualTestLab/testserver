@@ -7,7 +7,6 @@ import com.senla.bolkunets.virtualtestlab.domain.model.methodics.description.Met
 import com.senla.bolkunets.virtualtestlab.domain.model.methodics.result.PassingFact;
 import com.senla.bolkunets.virtualtestlab.domain.model.user.Person;
 import com.senla.bolkunets.virtualtestlab.domain.services.PassingFactService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -46,6 +45,13 @@ public class PassingFactServiceImpl implements PassingFactService {
     @Override
     public void deletePassingFact(PassingFact deleteFact) {
         passingFactDao.delete(deleteFact);
+    }
+
+    @Override
+    public PassingFact deletePassingFactById(Integer userId, Integer methodicsId) {
+        PassingFact passingMethodicsForUser = passingFactDao.findPassingMethodicsForUser(methodicsId, userId);
+        passingFactDao.delete(passingMethodicsForUser);
+        return passingMethodicsForUser;
     }
 
     @Override

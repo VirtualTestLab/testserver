@@ -60,6 +60,16 @@ public class MethodicsServiceImpl implements MethodicsService {
         return null;
     }
 
+    public boolean openMethodicsForUser(Integer methodicsId, Integer userId) {
+        UserProfile userProfile = userProfileDao.read(userId);
+        Methodics methodics = methodicsDao.read(methodicsId);
+        if(userProfile == null || methodics == null) {
+            return false;
+        }
+        userProfile.getOpenMethodicsForUser().add(methodics);
+        return true;
+    }
+
     public List<Methodics> getPassedMethodicsByUserProfile(Integer userProfileId) {
         UserProfile userProfile = userProfileDao.read(userProfileId);
         if(userProfile!=null){

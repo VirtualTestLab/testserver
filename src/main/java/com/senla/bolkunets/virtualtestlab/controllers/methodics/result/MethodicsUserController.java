@@ -40,6 +40,12 @@ public class MethodicsUserController {
         return dozerBeanMapper.map("passing fact was saved", ResponseMessageDto.class);
     }
 
+    @RequestMapping(value = "/delete", method = RequestMethod.PUT)
+    public ResponseMessageDto create(@RequestParam(name= "userId") Integer userId, @RequestParam(name= "methodicsId") Integer methodicsId){
+        passingFactService.deletePassingFactById(userId, methodicsId);
+        return dozerBeanMapper.map("passing fact was deleted", ResponseMessageDto.class);
+    }
+
     @RequestMapping(value = "/get/{methodicsId}", method = RequestMethod.GET)
     public MethodicsResultDto getResult(@PathVariable Integer methodicsId){
         User user = currentUserHolder.getCurrentUser();

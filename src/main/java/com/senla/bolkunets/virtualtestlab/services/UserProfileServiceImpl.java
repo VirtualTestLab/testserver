@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
+@Transactional
 public class UserProfileServiceImpl implements UserProfileService {
 
     private UserProfileDao userProfileDao;
@@ -17,34 +18,33 @@ public class UserProfileServiceImpl implements UserProfileService {
         this.userProfileDao = userProfileDao;
     }
 
-    @Transactional
     public UserProfile createUserProfile(UserProfile userProfile) {
        return userProfileDao.create(userProfile);
     }
 
-    @Transactional
     public void deleteUserProfile(UserProfile userProfile) {
         userProfileDao.delete(userProfile);
     }
 
-    @Transactional
     public UserProfile findUserProfileByLogin(String login) {
         return userProfileDao.findUserByLogin(login);
     }
 
-    @Transactional
     public List<UserProfile> getUsers() {
         return userProfileDao.readAll();
     }
 
-    @Transactional
     public UserProfile deleteUserProfileById(Integer id) {
         return userProfileDao.deleteById(id);
     }
 
-    @Transactional
     public UserProfile updateUserProfile(UserProfile userProfile) {
         return userProfileDao.update(userProfile);
+    }
+
+    @Override
+    public UserProfile findUserProfileById(Integer idUser) {
+        return userProfileDao.read(idUser);
     }
 
 }

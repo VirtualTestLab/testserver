@@ -14,4 +14,6 @@ public interface UserProfileService {
     UserProfile deleteUserProfileById(Integer id);
 
     UserProfile updateUserProfile(UserProfile userProfile);
+
+    UserProfile findUserProfileById(Integer idUser);
 }

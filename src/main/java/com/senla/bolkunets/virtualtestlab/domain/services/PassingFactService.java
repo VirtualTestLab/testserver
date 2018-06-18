@@ -1,7 +1,6 @@
 package com.senla.bolkunets.virtualtestlab.domain.services;
 
 import com.senla.bolkunets.virtualtestlab.domain.model.methodics.result.PassingFact;
-import com.senla.bolkunets.virtualtestlab.domain.model.methodics.result.ScaleValue;
 import com.senla.bolkunets.virtualtestlab.domain.model.user.Person;
 
 import java.util.List;
@@ -13,6 +12,8 @@ public interface PassingFactService {
     PassingFact getPassingFactForUser(Integer methodicsId, Integer userId);
 
     void deletePassingFact(PassingFact deleteFact);
+
+    PassingFact deletePassingFactById(Integer userId, Integer methodicsId);
 
     List<PassingFact> getPassingFactsByMethodics(Integer methodicsId);
 

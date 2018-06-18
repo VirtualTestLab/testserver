@@ -8,6 +8,7 @@ import com.senla.bolkunets.virtualtestlab.domain.services.UserProfileService;
 import com.senla.bolkunets.virtualtestlab.security.holder.CurrentUserHolder;
 import com.senla.bolkunets.virtualtestlab.security.model.User;
 import org.dozer.DozerBeanMapper;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -80,5 +81,19 @@ public class PersonController {
 		
 		return null;
        
+    }
+
+    @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
+    public PersonInformationDto getPersonById(@PathVariable Integer idUser) {
+
+        UserProfile userProfile = userProfileService.findUserProfileById(idUser);
+        Person profileInformation = userProfile.getPerson();
+
+        if(profileInformation!=null) {
+            return dozerBeanMapper.map(profileInformation, PersonInformationDto.class);
+        }
+
+        return null;
+
     }
 }

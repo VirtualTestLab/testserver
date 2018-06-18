@@ -1,10 +1,15 @@
 package com.senla.bolkunets.virtualtestlab.controllers.methodics.description;
 
+import com.senla.bolkunets.virtualtestlab.controllers.dto.messages.ResponseMessageDto;
 import com.senla.bolkunets.virtualtestlab.controllers.dto.methodics.description.MethodicsWithQuestionsDto;
+import com.senla.bolkunets.virtualtestlab.controllers.dto.methodics.result.PassingFactDto;
 import com.senla.bolkunets.virtualtestlab.domain.model.methodics.description.Methodics;
+import com.senla.bolkunets.virtualtestlab.domain.model.methodics.result.PassingFact;
 import com.senla.bolkunets.virtualtestlab.domain.services.MethodicsService;
+import com.senla.bolkunets.virtualtestlab.security.model.User;
 import org.dozer.DozerBeanMapper;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
