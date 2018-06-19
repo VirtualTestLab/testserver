@@ -48,7 +48,7 @@ public class MethodicsUserController {
     }
     
     @RequestMapping(value = "/methodicsresult", method = RequestMethod.GET)
-    public ResponseMessageDto getResultByMethodics(@RequestParam(name= "userId") Integer userId, @RequestParam(name= "methodicsId") Integer methodicsId){
+    public MethodicsResultDto getResultByMethodics(@RequestParam(name= "userId") Integer userId, @RequestParam(name= "methodicsId") Integer methodicsId){
         PassingFact passingFactForUser = passingFactService.getPassingFactForUser(methodicsId, userId);
         return dozerBeanMapper.map(passingFactForUser, MethodicsResultDto.class);
     }
