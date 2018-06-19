@@ -26,7 +26,7 @@ public class MethodicsManageController {
         this.passingFactService = passingFactService;
     }
 
-    @RequestMapping(value = "/delete", method = RequestMethod.PUT)
+    @RequestMapping(value = "/delete", method = RequestMethod.GET)
     public ResponseMessageDto create(@RequestParam(name= "userId") Integer userId, @RequestParam(name= "methodicsId") Integer methodicsId){
         passingFactService.deletePassingFactById(userId, methodicsId);
         return dozerBeanMapper.map("passing fact was deleted", ResponseMessageDto.class);
